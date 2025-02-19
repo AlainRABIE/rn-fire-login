@@ -1,17 +1,9 @@
-import { Stack, Redirect } from "expo-router";
-import { useAuth } from "@/context/auth";
-import { Text } from "react-native";
+import { Stack } from "expo-router"
 
 export default function AppLayout() {
-  const { user, loading } = useAuth();
-
-  if (loading) {
-    return <Text>Loading...</Text>;
-  }
-
-  if (!user) {
-    return <Redirect href="/" />;
-  }
-
-  return <Stack />;
+  return (
+    <Stack>
+      <Stack.Screen name='index'/>
+    </Stack>
+  )
 }

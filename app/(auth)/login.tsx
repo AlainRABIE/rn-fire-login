@@ -3,7 +3,7 @@ import {router} from 'expo-router'
 import { View, StyleSheet, Alert } from "react-native";
 import { TextInput, IconButton,Button as Bt } from "react-native-paper";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/config/config";
+import { auth1 } from "@/config/config";
 import { Link, useRouter } from "expo-router";
 import Button from "@/components/Button";
 
@@ -28,7 +28,7 @@ const LoginScreen = () => {
 
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth1, email, password);
       Alert.alert("Succès", "Connexion réussie !");
       router.replace("/dashboard")
       // Redirection ou mise à jour de l'état après connexion

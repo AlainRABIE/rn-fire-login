@@ -1,4 +1,4 @@
-import AuthProvider from "@/context/ctx";
+import { AuthProvider } from "@/context/ctx";
 import { Slot, Stack } from "expo-router";
 
 export default function RootLayout() {

@@ -5,7 +5,7 @@ import { TextInput, IconButton,Button as Bt } from "react-native-paper";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth1 } from "@/config/config";
 import { Link, useRouter } from "expo-router";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -31,7 +31,6 @@ const LoginScreen = () => {
       await signInWithEmailAndPassword(auth1, email, password);
       Alert.alert("Succès", "Connexion réussie !");
       router.replace("/dashboard")
-      // Redirection ou mise à jour de l'état après connexion
     } catch (error) {
       Alert.alert("Erreur", (error as Error).message);
     }

@@ -14,5 +14,5 @@ const GettAllTickets = async () : Promise<Ticket[]> => {
         ...doc.data() as Ticket,
     }));
 };
-export {GettAllTickets};
+export { GettAllTickets, Ticket };
     

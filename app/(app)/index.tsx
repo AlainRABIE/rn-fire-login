@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
- import { Link, Redirect, useRootNavigationState, useRouter } from 'expo-router'; 
+import { Link, Redirect, useRootNavigationState, useRouter } from 'expo-router';
 import { useAuth } from '@/context/ctx';
 import { getAuth } from 'firebase/auth';
 
@@ -22,10 +22,9 @@ export default function Index() {
     <View style={styles.container}>
       <Text style={styles.text}>index Screen</Text>
       <Link href="/(auth)/login" style={styles.button}>
-        Already have an account. Go toooooooooooooo
-      </Link>
+        S'inscrire      </Link>
       <Pressable onPress={signOut}>
-        <Text style={{color:'#fff'}}>
+        <Text style={{ color: '#fff' }}>
           Se déconnecter
         </Text>
       </Pressable>

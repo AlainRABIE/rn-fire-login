@@ -1,13 +1,14 @@
-import { Text, View, StyleSheet, Alert } from 'react-native';
+import { Text, View, StyleSheet, Alert, TextInput } from 'react-native';
 import { Link, router } from 'expo-router';
+import { Button as Bt } from "react-native-paper";
 import { useState } from 'react';
+import { Button } from '@/components/ui/Button';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/config/config';
-
+import { auth1 } from '@/config/config';
 export default function Register() {
 
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [email, setEmail] = useState<string | undefined>("");
+    const [password, setPassword] = useState<string | undefined>("");
     const [loading, setLoading] = useState(false);
 
     const handleRegister = async () => {
@@ -18,10 +19,9 @@ export default function Register() {
 
         setLoading(true);
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
+            await createUserWithEmailAndPassword(auth1, email, password);
             Alert.alert("Succès", "Inscription réussie !");
             router.replace("/login");
-            // Redirection ou mise à jour de l'état après inscription
         }
         catch (error) {
             Alert.alert("Erreur", (error as Error).message);
@@ -30,14 +30,31 @@ export default function Register() {
     };
 
 
-return (
-    <View style={styles.container}>
-        <Text style={styles.text}>Register Screen</Text>
-        <Link href="/(auth)/login" style={styles.button}>
-            Already have an account. Go to Login Screen
-        </Link>
-    </View>
-);
+    return (
+        <View style={styles.textinput}>
+            <TextInput
+                style={styles.button}
+                placeholder="Adresse e-mail"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+            />
+            <TextInput
+                style={styles.button}
+                placeholder="mots de passe"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+            />
+            <Bt
+                style={styles.textinput}
+                onPress={handleRegister}
+                loading={loading}
+            >
+                Register
+            </Bt>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -53,6 +70,13 @@ const styles = StyleSheet.create({
     button: {
         fontSize: 20,
         textDecorationLine: 'underline',
-        color: '#fff',
+        color: '#black',
+    },
+    textinput: {
+        width: 200,
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        color: '#red',
     },
 });
